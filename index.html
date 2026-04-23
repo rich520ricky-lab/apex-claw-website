@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Claw Protocol - Decentralized AI Productivity & Labor Compensation</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Apex Claw Protocol enables peer-to-peer AI ownership. Empowering workers displaced by AI to become owners of AI robots, capturing the value of automation through decentralized nodes and the Aistock100 compounding pool.">
+    <meta name="keywords" content="AI ownership, decentralized AI, peer-to-peer, AI robots, NVIDIA, Aistock100, automation, AI dividend, node manager">
+    <meta name="author" content="Apex Claw Protocol">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aistock100.org/ac/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aistock100.org/ac/">
+    <meta property="og:title" content="Apex Claw Protocol - Peer-to-Peer AI Ownership">
+    <meta property="og:description" content="Empowering workers displaced by AI to become owners of AI robots, capturing the value of automation through decentralized nodes and the Aistock100 compounding pool.">
+    <meta property="og:image" content="https://www.aistock100.org/ac/assets/images/og-image.png">
+    <meta property="og:site_name" content="Apex Claw Protocol">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="zh_CN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apex Claw Protocol - Peer-to-Peer AI Ownership">
+    <meta name="twitter:description" content="Empowering workers displaced by AI to become owners of AI robots, capturing the value of automation.">
+    <meta name="twitter:image" content="https://www.aistock100.org/ac/assets/images/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Apex Claw Protocol",
+        "url": "https://www.aistock100.org/ac/",
+        "logo": "https://www.aistock100.org/ac/assets/images/favicon.svg",
+        "description": "Peer-to-Peer AI Ownership protocol empowering workers displaced by AI to become owners of AI robots.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@aistock100.org",
+            "contactType": "customer support"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Apex Claw Protocol",
+        "url": "https://www.aistock100.org/ac/",
+        "inLanguage": ["en", "zh-TW", "zh-CN"]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Fira+Code:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* 解決 Tailwind CDN 載入時的 FOUC (無樣式內容閃爍) 問題 */
+        body { visibility: hidden; }
+        .tailwind-loaded body { visibility: visible; transition: opacity 0.3s ease-in-out; }
+
+        :root { --primary: #1e40af; --accent: #22d3ee; --teal: #00c9a0; }
+        body { font-family: 'Space Grotesk', 'Noto Sans TC', system-ui, sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: radial-gradient(circle at 20% 30%, #1e3a8a 0%, #080c14 60%, #0f172a 100%); }
+        .glass-nav { background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); }
+
+        .terminal-container { background: #0d1117; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 25px 60px rgba(0,0,0,0.6); overflow: hidden; }
+        .terminal-body { height: 320px; padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.78rem; color: #a5b4fc; overflow-y: hidden; display: flex; flex-direction: column-reverse; line-height: 1.7; }
+        .log-entry { margin-bottom: 5px; display: flex; gap: 12px; animation: fadeInUp 0.4s ease-out; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 4px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .log-tag { color: var(--accent); font-weight: 600; min-width: 110px; }
+
+        .diagram { background: #0f172a; color: #67e8f9; font-family: 'Fira Code', monospace; padding: 1.5rem; border-radius: 20px; border-left: 6px solid var(--accent); line-height: 1.9; font-size: 0.85rem; overflow-x: auto; margin: 2rem 0; text-align: center; }
+        @media (min-width: 640px) { .diagram { padding: 2rem; } }
+        
+        .prose h2 { color: #0f172a; font-weight: 800; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose h3 { color: #1e40af; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.85; color: #334155; }
+        
+        .highlight-box { background: #f0f9ff; border: 1px solid #bae6fd; padding: 1.75rem; border-radius: 1.5rem; border-left: 6px solid #0284c7; margin: 2rem 0; }
+        .faq-card { background: white; border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .faq-card h4 { color: #0f172a; font-weight: 700; font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .calc-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; }
+        .calc-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #e2e8f0; padding: 0.75rem 0; }
+        .calc-row:last-child { border-bottom: none; font-weight: bold; color: #0f172a; font-size: 1.1rem; padding-top: 1rem;}
+        
+        .robot-card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: transform 0.3s; }
+        .robot-card:hover { transform: translateY(-5px); }
+        .robot-img { width: 100%; height: 200px; object-fit: contain; background-color: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+
+        .tab-btn { transition: all 0.2s; padding-bottom: 0.5rem; padding-top: 0.5rem; cursor: pointer; text-align: center; }
+        .tab-btn.active { border-bottom: 4px solid #2563eb; color: #1d4ed8; font-weight: 700; }
+        .tab-btn.inactive { border-bottom: 4px solid transparent; color: #64748b; font-weight: 500; }
+        .tab-btn.inactive:hover { color: #334155; border-color: #cbd5e1; }
+
+        .lang-btn { cursor: pointer; }
+        .lang-btn.active { background-color: #1e40af; color: white; box-shadow: 0 0 0 3px rgba(30,64,175,0.2); }
+        .ticker-val { font-variant-numeric: tabular-nums; letter-spacing: -1px; font-family: 'Fira Code', monospace; }
+        
+        /* Distribution Flow Styles */
+        .dist-row { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 600; margin-bottom: 0.5rem; }
+        .dist-pct { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 1.1rem; min-width: 4.5rem; padding-top: 2px; }
+
+        .interactive-slider {
+            -webkit-appearance: none; appearance: none; width: 100%; height: 10px; background: rgba(255,255,255,0.15); border-radius: 5px; outline: none; transition: 0.2s;
+        }
+        .interactive-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none; width: 28px; height: 28px; border-radius: 50%; background: #22d3ee; cursor: pointer; box-shadow: 0 0 15px rgba(34, 211, 238, 0.6); border: 3px solid #fff; transition: transform 0.1s;
+        }
+        .interactive-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        
+        .pdf-icon-custom { font-family: system-ui, sans-serif; font-weight: 900; border-radius: 8px; padding: 12px 8px; font-size: 20px; line-height: 1; letter-spacing: 1px; display: inline-block; margin-bottom: 1rem; border: 2px solid; }
+        .pdf-teal { color: #2dd4bf; border-color: #2dd4bf; background: rgba(45, 212, 191, 0.1); }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.documentElement.classList.add('tailwind-loaded');
+        });
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+        
+        <div class="flex items-center gap-3 sm:gap-4 cursor-pointer group transition-transform hover:scale-[1.02]" onclick="switchTab('whitepaper'); window.scrollTo(0,0);">
+            
+            <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:shadow-purple-500/50 transition-all duration-500 overflow-hidden flex-shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 group-hover:scale-110 transition-transform duration-500"></div>
+                <div class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/40 to-transparent"></div>
+                <div class="absolute inset-0 rounded-xl sm:rounded-2xl border border-white/50 z-20"></div>
+                <span class="relative z-10 text-white font-black tracking-tighter drop-shadow-md" style="font-size:1.3rem; font-family: 'Space Grotesk', sans-serif;">AC</span>
+            </div>
+
+            <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-800 group-hover:text-blue-700 transition-colors italic" style="font-family: 'Playfair Display', serif;">Apex Claw</span>
+        </div>
+
+        <div class="flex gap-1 bg-slate-100 p-1 rounded-xl sm:rounded-2xl border">
+            <button onclick="switchLang('en')" id="btn-en" class="lang-btn active px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition-all">EN</button>
+            <button onclick="switchLang('zh-TW')" id="btn-tw" class="lang-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition-all">繁體</button>
+            <button onclick="switchLang('zh-CN')" id="btn-cn" class="lang-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition-all">简体</button>
+        </div>
+    </div>
+</nav>
+
+<header class="hero-gradient text-white pt-32 sm:pt-44 pb-20 sm:pb-36 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-3">
+            <div class="inline-flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-xl px-4 sm:px-6 py-2 sm:py-2.5 rounded-full mb-8 sm:mb-10 border border-white/20">
+                <span class="relative flex h-2 w-2 sm:h-3 sm:w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-cyan-400"></span></span>
+                <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-cyan-300" id="version-tag">Apex Claw Protocol • March 2026</span>
+            </div>
+            
+            <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-black leading-tight tracking-tight mb-4 sm:mb-6 italic text-white" style="font-family: 'Playfair Display', serif;">Peer-to-Peer AI Ownership</h1>
+            <p id="hero-subtitle" class="text-base sm:text-lg md:text-2xl text-slate-300 max-w-2xl font-light mb-10 leading-relaxed">Empowering workers displaced by AI to become owners of AI robots, capturing the value of automation.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 mb-6 sm:mb-8 border-l-2 border-white/10 pl-4 sm:pl-8">
+                <div>
+                    <p class="text-blue-300 text-[10px] font-black uppercase tracking-widest mb-1 sm:mb-2" id="stat-cap">Total Value (USD) *Simulated</p>
+                    <div class="text-3xl sm:text-4xl font-bold ticker-val">$<span id="ticker-capital">34,120,500</span></div>
+                </div>
+                <div>
+                    <p class="text-blue-300 text-[10px] font-black uppercase tracking-widest mb-1 sm:mb-2" id="stat-prof">Daily Dividend (USD) *Simulated</p>
+                    <div class="text-3xl sm:text-4xl font-bold ticker-val text-teal-400">+$<span id="ticker-profit">82,450</span></div>
+                </div>
+            </div>
+            <div class="mb-10 sm:mb-12 bg-yellow-500/10 border border-yellow-400/30 rounded-xl px-4 py-2.5 text-[10px] sm:text-xs text-yellow-200/80 leading-relaxed" id="disclaimer-box">
+                <i class="fas fa-exclamation-triangle mr-1.5 text-yellow-400"></i>
+                <span id="disclaimer-text">Disclaimer: All values shown are simulated for demonstration purposes only and do not represent actual returns. Past performance does not guarantee future results. Participation involves risk.</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
+                <button onclick="switchTab('whitepaper'); document.getElementById('whitepaper-section').scrollIntoView({behavior: 'smooth'});" class="w-full sm:w-auto text-center bg-white text-blue-800 px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition-transform" id="btn-read">Read Whitepaper</button>
+                <a href="mailto:contact@aistock100.org" class="w-full sm:w-auto text-center border-2 border-white/20 hover:border-white text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all" id="btn-join">Contact Us</a>
+            </div>
+        </div>
+        <div class="lg:col-span-2 text-white">
+            <div class="terminal-container">
+                <div class="px-5 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
+                    <div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500/50"></div><div class="w-3 h-3 rounded-full bg-yellow-500/50"></div><div class="w-3 h-3 rounded-full bg-green-500/50"></div></div>
+                    <span class="text-[10px] font-mono opacity-40">APEX_CLAW_NODE_MONITOR</span>
+                </div>
+                <div class="terminal-body" id="log-stream"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 sm:-mt-16 pb-20 relative z-20" id="whitepaper-section">
+    <div class="bg-white rounded-3xl sm:rounded-[40px] p-6 sm:p-10 md:p-16 shadow-2xl border border-slate-100">
+        
+        <div class="grid grid-cols-3 gap-1 sm:gap-6 mb-6 sm:mb-8 border-b border-slate-200 pb-2">
+            <button onclick="switchTab('whitepaper')" id="tab-whitepaper" class="tab-btn active text-[11px] sm:text-base px-1">Protocol Whitepaper</button>
+            <button onclick="switchTab('operating')" id="tab-operating" class="tab-btn inactive text-[11px] sm:text-base px-1">Operating Model</button>
+            <button onclick="switchTab('faq')" id="tab-faq" class="tab-btn inactive text-[11px] sm:text-base px-1">FAQ</button>
+        </div>
+
+        <div class="prose max-w-none text-sm sm:text-base" id="dynamic-body">
+            </div>
+    </div>
+
+    <div class="mt-20 bg-slate-900 rounded-[40px] p-8 sm:p-12 md:p-16 text-center text-white shadow-2xl">
+        <h3 id="download-title" class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 italic" style="font-family: 'Playfair Display', serif;">Download Protocol Document</h3>
+        <div class="flex justify-center">
+            <a href="Apex_Claw.pdf" target="_blank" download class="block w-full max-w-md p-6 sm:p-8 rounded-3xl transition-all group no-underline text-white relative bg-slate-800 border border-slate-700 hover:border-teal-500 hover:-translate-y-1 shadow-lg">
+                <div class="pdf-icon-custom pdf-teal group-hover:scale-110 transition-transform text-center mx-auto mb-4">PDF</div>
+                <div class="font-bold text-xl text-teal-100 text-center">English Full Whitepaper</div>
+            </a>
+        </div>
+    </div>
+</main>
+
+<section class="bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20 text-center" id="waitlist-section">
+    <div class="max-w-2xl mx-auto px-6">
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-4 italic" style="font-family: 'Playfair Display', serif;" id="waitlist-title">Join the Waitlist</h2>
+        <p class="text-slate-400 mb-8 text-sm sm:text-base" id="waitlist-desc">Be among the first to participate as a Node Manager when Apex Claw launches. Enter your email to stay updated.</p>
+        <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="handleWaitlist(event)">
+            <input type="email" required placeholder="your@email.com" class="flex-1 px-5 py-3.5 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 text-sm">
+            <button type="submit" class="px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25 text-sm whitespace-nowrap" id="waitlist-btn">Join Waitlist</button>
+        </form>
+        <p class="text-slate-600 text-[10px] mt-4" id="waitlist-privacy">We respect your privacy. Unsubscribe at any time.</p>
+    </div>
+</section>
+
+<footer class="bg-slate-950 text-slate-500 py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-left">
+            <div>
+                <div class="text-lg font-bold text-white mb-3 italic" style="font-family: 'Playfair Display', serif;">Apex Claw Protocol</div>
+                <p class="text-xs text-slate-500 leading-relaxed" id="footer-about">Decentralized AI ownership protocol enabling shared prosperity through peer-to-peer automation.</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider" id="footer-links-title">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#whitepaper-section" class="hover:text-cyan-400 transition-colors" onclick="switchTab('whitepaper')">Whitepaper</a></li>
+                    <li><a href="#whitepaper-section" class="hover:text-cyan-400 transition-colors" onclick="switchTab('operating')">Operating Model</a></li>
+                    <li><a href="#whitepaper-section" class="hover:text-cyan-400 transition-colors" onclick="switchTab('faq')">FAQ</a></li>
+                    <li><a href="assets/pdf/Apex_Claw.pdf" download class="hover:text-cyan-400 transition-colors">Download PDF</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider" id="footer-community-title">Community</h4>
+                <div class="flex gap-4 mb-4">
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="text-xs"><a href="mailto:contact@aistock100.org" class="hover:text-cyan-400 transition-colors">contact@aistock100.org</a></p>
+            </div>
+        </div>
+        <div class="border-t border-slate-800 pt-6 text-center">
+            <p class="text-xs sm:text-sm mb-2" id="footer-copy">© 2026 Apex Claw Protocol • Decentralized AI Productivity Infrastructure</p>
+            <p class="text-[10px] sm:text-xs opacity-40" id="footer-motto">Turning the automation crisis into shared prosperity.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+let cap = 34120500, prof = 82450;
+let currentLang = 'en';
+let currentTab = 'whitepaper';
+
+function runTickers() {
+    setInterval(() => {
+        cap += Math.random() * 120; prof += Math.random() * 15;
+        document.getElementById('ticker-capital').innerText = Math.floor(cap).toLocaleString();
+        document.getElementById('ticker-profit').innerText = Math.floor(prof).toLocaleString();
+    }, 1200);
+}
+
+function runLogs() {
+    const stream = document.getElementById('log-stream');
+    const nodes = ["LA_NODE_01","SF_NODE_22","TW_NODE_09","SG_NODE_14"];
+    const signals = ["NVIDIA_INF_OK","TIKTOK_SYNC_TX","AISTOCK_TX","DAO_DISTRIBUTION"];
+    setInterval(() => {
+        const ts = new Date().toLocaleTimeString('en-US', { hour12: false });
+        const node = nodes[Math.floor(Math.random() * nodes.length)];
+        const sig = signals[Math.floor(Math.random() * signals.length)];
+        const val = (Math.random() * 450).toFixed(2);
+        const entry = document.createElement('div');
+        entry.className = 'log-entry text-xs sm:text-[0.78rem]';
+        entry.innerHTML = `<span class="opacity-30 text-white">[${ts}]</span><span class="log-tag">${node}</span><span class="flex-grow text-white">${sig}</span><span class="text-teal-400">+$${val}</span>`;
+        stream.prepend(entry);
+        if (stream.children.length > 12) stream.removeChild(stream.lastChild);
+    }, 1500);
+}
+
+const meta = {
+    'en': {
+        heroTitle: 'Peer-to-Peer AI Ownership',
+        heroSubtitle: 'Empowering workers displaced by AI to become owners of AI robots, capturing the value of automation.',
+        btnRead: 'Read Protocol',
+        btnJoin: 'Contact Us',
+        statCap: 'Total Value (USD) *Simulated',
+        statProf: 'Daily Dividend (USD) *Simulated',
+        dlTitle: 'Download Full Whitepaper',
+        footerCopy: '© 2026 Apex Claw Protocol • Powered by Aistock100 Compounding',
+        footerMotto: 'Turning the automation crisis into shared prosperity.',
+        tabWhitepaper: 'Protocol Whitepaper',
+        tabOperating: 'Operating & Ecosystem',
+        tabFaq: 'FAQ',
+        calcTitle: 'Ultimate Wealth Projection: 10-Year View (5 Robots)',
+        calcDesc: 'If a Node Manager reaches the limit (5 commercial robots), they can freely choose their Aistock100 reinvestment ratio (No Lock-in). Adjust the slider below to simulate the outcome:',
+        calcKeepText: 'Cash Kept (Basic Income):',
+        calcRatioText: 'Aistock100 Reinvestment:',
+        calcMonthlyIncome: 'Monthly Cash Income',
+        calcMonthlyPool: 'Monthly Reinvestment',
+        calcThYear: 'Year',
+        calcThCash: 'Monthly Cash',
+        calcThTotal: 'Cumulative Cash',
+        calcThPool: 'Aistock100 Pool Value (50% APY)',
+        calcRowYear: 'Year ',
+        calcDisclaimer: '* Note: This projection is based on the average historical annualized return (50% APY) of the Aistock100 strategy and does not guarantee future results.',
+        conclusionText: 'Apex Claw proposes a decentralized solution to ensure the production dividends of the AI era are not concentrated in a few centralized entities, but shared universally through open participation and mathematical mechanisms. We believe this protocol can effectively mitigate the purchasing power crisis caused by automation and provide a viable infrastructure for the coexistence of AI and humanity.',
+        disclaimer: 'Disclaimer: All values shown are simulated for demonstration purposes only and do not represent actual returns. Past performance does not guarantee future results. Participation involves risk.',
+        waitlistTitle: 'Join the Waitlist',
+        waitlistDesc: 'Be among the first to participate as a Node Manager when Apex Claw launches. Enter your email to stay updated.',
+        waitlistBtn: 'Join Waitlist',
+        waitlistPrivacy: 'We respect your privacy. Unsubscribe at any time.',
+        waitlistSuccess: 'Thank you! You have been added to the waitlist.'
+    },
+    'zh-TW': {
+        heroTitle: '點對點 AI 擁有權協議',
+        heroSubtitle: '讓受 AI 影響的勞工成為機器人的主人，開創共享繁榮的新時代。',
+        btnRead: '閱讀協議白皮書',
+        btnJoin: '聯繫團隊',
+        statCap: '累積生產價值 (USD) *模擬中',
+        statProf: '今日分潤總額 (USD) *模擬中',
+        dlTitle: '下載 Apex Claw 完整技術白皮書 (英文)',
+        footerCopy: '© 2026 Apex Claw Protocol • 去中心化 AI 生產力基礎設施',
+        footerMotto: '讓每一個被 AI 改變的人，都能成為 AI 生產力的主人',
+        tabWhitepaper: '協議白皮書',
+        tabOperating: '營運模式與生態',
+        tabFaq: '常見問題',
+        calcTitle: '終極財富試算：管理 5 台商用機器人的 10 年預測',
+        calcDesc: '若一位節點經理達到管理上限（5 台商用機器人）。他可以自由決定是否將收益投入 Aistock100 複利池（無綁約）。請拖曳下方滑桿即時試算：',
+        calcKeepText: '保留現金 (基礎生活保障)：',
+        calcRatioText: '投入 Aistock100 比例：',
+        calcMonthlyIncome: '每月現金收入 (生活費)',
+        calcMonthlyPool: '每月投入複利池',
+        calcThYear: '年度',
+        calcThCash: '每月現金收入',
+        calcThTotal: '累計領出總額',
+        calcThPool: 'Aistock100 複利池總值 (50% APY)',
+        calcRowYear: '第 {y} 年',
+        calcDisclaimer: '* 註：此預測是基於 Aistock100 策略的平均歷史年化報酬率 (50% APY) 進行的複利計算，不保證未來結果。',
+        conclusionText: 'Apex Claw 提出一種去中心化解決方案，讓 AI 時代的生產紅利不再集中於少數中心化實體，而是透過開放參與與數學機制實現全民共享。我們相信，此協議能有效緩解自動化帶來的購買力危機，並為 AI 與人類共存提供可行的基礎設施。',
+        disclaimer: '免責聲明：所有顯示的數值僅為模擬展示用途，不代表實際收益。過去表現不保證未來結果。參與涉及風險。',
+        waitlistTitle: '加入等候名單',
+        waitlistDesc: '成為 Apex Claw 正式啟動後的首批節點經理。輸入您的 Email 以獲取最新進度通知。',
+        waitlistBtn: '加入等候名單',
+        waitlistPrivacy: '我們尊重您的隱私。您可隨時取消訂閱。',
+        waitlistSuccess: '感謝您！已成功加入等候名單。'
+    },
+    'zh-CN': {
+        heroTitle: '点对点 AI 拥有权协议',
+        heroSubtitle: '让受 AI 影响的劳工成为机器人的主人，开创共享繁荣的新时代。',
+        btnRead: '阅读协议白皮书',
+        btnJoin: '联系团队',
+        statCap: '累计生产价值 (USD) *模拟中',
+        statProf: '今日分润总额 (USD) *模拟中',
+        dlTitle: '下载 Apex Claw 完整技术白皮书 (英文)',
+        footerCopy: '© 2026 Apex Claw Protocol • 去中心化 AI 生产力基础设施',
+        footerMotto: '让每一个被 AI 改变的人，都能成为 AI 生产力的主人',
+        tabWhitepaper: '协议白皮书',
+        tabOperating: '运营模式与生态',
+        tabFaq: '常见问题',
+        calcTitle: '终极财富试算：管理 5 台商用机器人的 10 年预测',
+        calcDesc: '若一位节点经理达到管理上限（5 台商用机器人）。他可以自由决定是否将收益投入 Aistock100 复利池（无绑约）。请拖曳下方滑杆即时试算：',
+        calcKeepText: '保留现金 (基础生活保障)：',
+        calcRatioText: '投入 Aistock100 比例：',
+        calcMonthlyIncome: '每月现金收入 (生活费)',
+        calcMonthlyPool: '每月投入复利池',
+        calcThYear: '年度',
+        calcThCash: '每月现金收入',
+        calcThTotal: '累计领出总额',
+        calcThPool: 'Aistock100 复利池总值 (50% APY)',
+        calcRowYear: '第 {y} 年',
+        calcDisclaimer: '* 注：此预测是基于 Aistock100 策略的平均历史年化报酬率 (50% APY) 进行的复利计算，不保证未来结果。',
+        conclusionText: 'Apex Claw 提出一种去中心化解决方案，让 AI 时代的生产红利不再集中于少数中心化实体，而是通过开放参与与数学机制实现全民共享。我们相信，此协议能有效缓解自动化带来的购买力危机，并为 AI 与人类共存提供可行的基础设施。',
+        disclaimer: '免责声明：所有显示的数值仅为模拟展示用途，不代表实际收益。过去表现不保证未来结果。参与涉及风险。',
+        waitlistTitle: '加入等候名单',
+        waitlistDesc: '成为 Apex Claw 正式启动后的首批节点经理。输入您的 Email 以获取最新进度通知。',
+        waitlistBtn: '加入等候名单',
+        waitlistPrivacy: '我们尊重您的隐私。您可随时取消订阅。',
+        waitlistSuccess: '感谢您！已成功加入等候名单。'
+    }
+};
+
+function updateCalculator() {
+    const slider = document.getElementById('reinvest-slider');
+    if (!slider) return;
+    
+    const d = meta[currentLang];
+    const ratio = parseInt(slider.value);
+    const keepRatio = 60 - ratio;
+    
+    document.getElementById('val-reinvest').innerText = ratio;
+    document.getElementById('val-keep').innerText = keepRatio;
+
+    const totalGross = 10245; 
+
+    const monthlyCash = Math.round(totalGross * (keepRatio / 100));
+    const monthlyReinvest = Math.round(totalGross * (ratio / 100));
+
+    document.getElementById('val-cash-monthly').innerText = '$' + monthlyCash.toLocaleString();
+    document.getElementById('val-pool-monthly').innerText = '$' + monthlyReinvest.toLocaleString();
+
+    const r = 0.034366; 
+    const tbody = document.getElementById('calc-tbody');
+    tbody.innerHTML = '';
+
+    const yearsToDisplay = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    yearsToDisplay.forEach(year => {
+        const months = year * 12;
+        const cumulativeCash = monthlyCash * months;
+
+        let fv = 0;
+        if (monthlyReinvest > 0) {
+            fv = monthlyReinvest * (Math.pow(1 + r, months) - 1) / r;
+        }
+
+        const isYear10 = year === 10;
+        const rowClass = isYear10 ? 'bg-blue-600/30 font-bold border-t-2 border-blue-400/50' : 'hover:bg-white/5 border-b border-white/10';
+        
+        let yearStr = d.calcRowYear.replace('{y}', year);
+        if(currentLang === 'en') yearStr = yearStr + year; 
+
+        const tr = document.createElement('tr');
+        tr.className = rowClass;
+        tr.innerHTML = `
+            <td class="p-3 sm:p-4 font-sans ${isYear10 ? 'text-lg text-white' : ''}">${yearStr}</td>
+            <td class="p-3 sm:p-4 ${isYear10 ? 'text-lg text-emerald-300' : 'text-blue-100'}">$${monthlyCash.toLocaleString()}</td>
+            <td class="p-3 sm:p-4 ${isYear10 ? 'text-lg text-emerald-300' : 'text-emerald-200'}">$${cumulativeCash.toLocaleString()}</td>
+            <td class="p-3 sm:p-4 ${isYear10 ? 'text-xl text-yellow-300' : 'text-yellow-400/80'}">~$${Math.round(fv).toLocaleString()}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function getWhitepaperContent(lang) {
+    if (lang === 'zh-TW') {
+        return `
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6" style="font-family: 'Playfair Display', serif;">摘要 (Abstract)</h2>
+            <p>本文提出一種純粹點對點的 AI 生產力與勞動力補償協議，允許自動化勞動產生的紅利直接由 AI 節點發送給失業者，而無需依賴中心化的企業中介。儘管去中心化金融解決了價值轉移的信任問題，但若實體生產工具仍由第三方控制，根本問題依舊存在。為解決購買力危機，我們建立了一個 AI 節點對等網路。該系統採用開放參與、NVIDIA 運算硬體，並透過全球 TikTok 流量進行變現。生產力輸出藉由雜湊時間戳寫入智能合約鏈中，補償則透過 Aistock100 量化池的數學模型進行路徑規劃，確保透明且自動地分配給節點經理與網路參與者。</p>
+            
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">1. 引言 (Introduction)</h2>
+            <p>傳統經濟系統幾乎完全依賴人類勞動力與工資的線性交換。這在人類主導的產業中運作良好，但當人工智慧大幅提高邊際生產力時便會失效。隨著 AI 產出增長快於工資，總體購買力將崩塌，形成不可持續的惡性循環。</p>
+            <p>我們需要的是一個基於數學證明而非企業信任的電子與實體系統。本文提出一個點對點網路，讓任何人都能共同擁有並營運 AI 節點，實質上將生產資料資產化。網路將物理生產力輸出透過雜湊時間戳寫入智能合約鏈，形成一個去中心化的勞動經濟體。</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">2. 網路架構 (The Network)</h2>
+            <p>實體任務與數位內容生成由搭載 NVIDIA 運算平台的自動化 AI 節點執行。每個節點由一個輕量級應用程式進行本地管理。運作流程如下：</p>
+            <ol class="list-decimal pl-6 mb-4 space-y-2 text-slate-700">
+                <li>節點經理 App 即時指揮硬體操作。</li>
+                <li>節點透過 TikTok API 廣播輸出，直接將全球流量變現。</li>
+                <li>離線支付在本地記錄，並定期同步至網路。</li>
+                <li>所有產生的收入根據經理選擇的分配比例，導入 Aistock100 複利池。</li>
+            </ol>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 text-slate-800">3. 節點架構</h3>
+            <div class="diagram text-center">
+                [實體環境] → [NVIDIA 機器人推論] → [節點經理] → [TikTok 變現] → [Aistock100 金融池]
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">3. 生產力與複利模型 (Productivity and Compounding Model)</h2>
+            <p>硬體會隨時間折舊，且原始勞動價值會波動。為維持長期網路穩定，我們定義節點的總產出 \\(V\\) 為實體勞動 \\(L\\) 與 TikTok 流量收益 \\(T\\) 的時間積分，並以 Aistock100 池的平均回報率 \\(\\bar{r}\\) 進行複利計算：</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[V = \\int_{0}^{t} [L(s) + T(s)] ds \\cdot (1 + \\bar{r})^t\\]</div>
+            <p>為抵銷硬體折舊 \\(H\\)，國庫儲備 \\(R\\) 必須滿足以下微分方程：</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[\\frac{dR}{dt} = \\alpha V(t) - \\delta H(t)\\]</div>
+            <p>其中 \\(\\alpha\\) 是分配給複利池的比例，\\(\\delta\\) 是硬體的折舊率。</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">4. 分潤機制 (自由彈性)</h2>
+            <p>根據設計，任何結算收益的第一筆交易都是根據預定義智能合約規則分配收益的特殊交易。這創造了節點支持網路的激勵，同時允許財富自由流通。設總收入為 \\(I\\)。</p>
+            
+            <div class="dist-flow mb-8 mt-4">
+                <div class="dist-row bg-blue-50 text-blue-700">
+                    <span class="dist-pct">30%</span>
+                    <div>資金提供者 (S<sub>funder</sub>)</div>
+                </div>
+                <div class="dist-row bg-teal-50 text-teal-700">
+                    <span class="dist-pct">30%</span>
+                    <div>節點經理 (S<sub>manager</sub>) - 基礎生活保障</div>
+                </div>
+                <div class="dist-row bg-teal-50 text-teal-700">
+                    <span class="dist-pct">0%~30%</span>
+                    <div>
+                        節點經理 (S<sub>manager</sub>) - Aistock100 複利池
+                        <div class="text-sm font-normal mt-1 opacity-90 block">完全自由決定投入比例，不強制綁約。若選擇 0% 投入，基礎生活保障獲取高達 60% 現金。</div>
+                    </div>
+                </div>
+                <div class="dist-row bg-orange-50 text-orange-700">
+                    <span class="dist-pct">10%</span>
+                    <div>DAO 治理與技術研發 (S<sub>dao</sub>)</div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">5. TikTok 流量價值引擎</h2>
+            <p>機器人透過邊緣 AI 自動生成內容，流量價值函數為：</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[G(v) = \\kappa \\cdot v^{\\gamma}, \\quad \\gamma > 1\\]</div>
+            <p>其中 \\(v\\) 為流量指標，\\(\\gamma\\) 為互動率指數。所產生收益即時轉入 <strong>Aistock100</strong> 帳戶，實現流量到資本的自動轉化。</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">6. 參考文獻 (References)</h2>
+            <p class="text-sm text-slate-500 space-y-1">
+                [1] Nakamoto, S. (2008). <i>Bitcoin: A Peer-to-Peer Electronic Cash System.</i><br>
+                [2] NVIDIA Corp. (2025). <i>Edge AI and Robotics: NVIDIA Computing Architecture in Retail Automation.</i><br>
+                [3] Amodei, D. (Anthropic). (2025). <i>The Economic Displacement of Labor in the AI Era.</i><br>
+                [4] Apex Consensus. (2025). <i>Aistock100: Quantifying Algorithmic Compounding in Decentralized Economies.</i><br>
+                [5] Acemoglu, D., & Restrepo, P. (2022). <i>Automation and New Tasks: How Technology Displaces and Reinstates Labor.</i> Journal of Economic Perspectives.<br>
+                [6] Frey, C. B., & Osborne, M. A. (2017). <i>The Future of Employment: How Susceptible Are Jobs to Computerisation?</i> Technological Forecasting and Social Change.
+            </p>
+        `;
+    } else if (lang === 'zh-CN') {
+        return `
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6" style="font-family: 'Playfair Display', serif;">摘要 (Abstract)</h2>
+            <p>本文提出一种纯粹点对点的 AI 生产力与劳动力补偿协议，允许自动化劳动产生的红利直接由 AI 节点发送给失业者，而无需依赖中心化的企业中介。尽管去中心化金融解决了价值转移的信任问题，但若实体生产工具仍由第三方控制，根本问题依旧存在。为解决购买力危机，我们建立了一个 AI 节点对等网络。该系统采用开放参与、NVIDIA 运算硬件，并通过全球 TikTok 流量进行变现。生产力输出藉由哈希时间戳写入智能合约链中，补偿则通过 Aistock100 量化池的数学模型进行路径规划，确保透明且自动地分配给节点经理与网络参与者。</p>
+            
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">1. 引言 (Introduction)</h2>
+            <p>传统经济系统几乎完全依赖人类劳动力与工资的线性交换。这在人类主导的产业中运作良好，但当人工智能大幅提高边际生产力时便会失效。随着 AI 产出增长快于工资，总体购买力将崩塌，形成不可持续的恶性循环。</p>
+            <p>我们需要的是一个基于数学证明而非企业信任的电子与实体系统。本文提出一个点对点网络，让任何人都能共同拥有并运营 AI 节点，实质上将生产资料资产化。网络将物理生产力输出通过哈希时间戳写入智能合约链，形成一个去中心化的劳动经济体。</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">2. 网络架构 (The Network)</h2>
+            <p>实体任务与数字内容生成由搭载 NVIDIA 运算平台的自动化 AI 节点执行。每个节点由一个轻量级应用程序进行本地管理。运作流程如下：</p>
+            <ol class="list-decimal pl-6 mb-4 space-y-2 text-slate-700">
+                <li>节点经理 App 即时指挥硬件操作。</li>
+                <li>节点通过 TikTok API 广播输出，直接将全球流量变现。</li>
+                <li>离线支付在本地记录，并定期同步至网络。</li>
+                <li>所有产生的收入根据经理选择的分配比例，导入 Aistock100 复利池。</li>
+            </ol>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 text-slate-800">3. 节点架构</h3>
+            <div class="diagram text-center">
+                [实体环境] → [NVIDIA 机器人推论] → [节点经理] → [TikTok 变现] → [Aistock100 金融池]
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">3. 生产力与复利模型 (Productivity and Compounding Model)</h2>
+            <p>硬件会随时间折旧，且原始劳动价值会波动。为维持长期网络稳定，我们定义节点的总产出 \\(V\\) 为实体劳动 \\(L\\) 与 TikTok 流量收益 \\(T\\) 的时间积分，并以 Aistock100 池的平均回报率 \\(\\bar{r}\\) 进行复利计算：</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[V = \\int_{0}^{t} [L(s) + T(s)] ds \\cdot (1 + \\bar{r})^t\\]</div>
+            <p>为抵销硬件折旧 \\(H\\)，国库储备 \\(R\\) 必须满足以下微分方程：</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[\\frac{dR}{dt} = \\alpha V(t) - \\delta H(t)\\]</div>
+            <p>其中 \\(\\alpha\\) 是分配给复利池的比例，\\(\\delta\\) 是硬件的折旧率。</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">4. 分润机制 (自由弹性)</h2>
+            <p>根据设计，任何结算收益的第一笔交易都是根据预定义智能合约规则分配收益的特殊交易。这创造了节点支持网络的激励，同时允许财富自由流通。设总收入为 \\(I\\)。</p>
+
+            <div class="dist-flow mb-8 mt-4">
+                <div class="dist-row bg-blue-50 text-blue-700">
+                    <span class="dist-pct">30%</span>
+                    <div>资金提供者 (S<sub>funder</sub>)</div>
+                </div>
+                <div class="dist-row bg-teal-50 text-teal-700">
+                    <span class="dist-pct">30%</span>
+                    <div>节点经理 (S<sub>manager</sub>) - 基础生活保障</div>
+                </div>
+                <div class="dist-row bg-teal-50 text-teal-700">
+                    <span class="dist-pct">0%~30%</span>
+                    <div>
+                        节点经理 (S<sub>manager</sub>) - Aistock100 复利池
+                        <div class="text-sm font-normal mt-1 opacity-90 block">完全自由决定投入比例，不强制绑约。若选择 0% 投入，基础生活保障获取高达 60% 现金。</div>
+                    </div>
+                </div>
+                <div class="dist-row bg-orange-50 text-orange-700">
+                    <span class="dist-pct">10%</span>
+                    <div>DAO 治理与技术研发 (S<sub>dao</sub>)</div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">5. TikTok 流量价值引擎</h2>
+            <p>机器人透过边缘 AI 自动生成内容，流量价值函数为：</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[G(v) = \\kappa \\cdot v^{\\gamma}, \\quad \\gamma > 1\\]</div>
+            <p>其中 \\(v\\) 为流量指标，\\(\\gamma\\) 为互动率指数。所产生收益即时转入 <strong>Aistock100</strong> 账户，实现流量到资本的自动转化。</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">6. 参考文献 (References)</h2>
+            <p class="text-sm text-slate-500 space-y-1">
+                [1] Nakamoto, S. (2008). <i>Bitcoin: A Peer-to-Peer Electronic Cash System.</i><br>
+                [2] NVIDIA Corp. (2025). <i>Edge AI and Robotics: NVIDIA Computing Architecture in Retail Automation.</i><br>
+                [3] Amodei, D. (Anthropic). (2025). <i>The Economic Displacement of Labor in the AI Era.</i><br>
+                [4] Apex Consensus. (2025). <i>Aistock100: Quantifying Algorithmic Compounding in Decentralized Economies.</i><br>
+                [5] Acemoglu, D., & Restrepo, P. (2022). <i>Automation and New Tasks: How Technology Displaces and Reinstates Labor.</i> Journal of Economic Perspectives.<br>
+                [6] Frey, C. B., & Osborne, M. A. (2017). <i>The Future of Employment: How Susceptible Are Jobs to Computerisation?</i> Technological Forecasting and Social Change.
+            </p>
+        `;
+    } else {
+        return `
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6" style="font-family: 'Playfair Display', serif;">Abstract</h2>
+            <p>A purely peer-to-peer AI productivity and labor compensation protocol would allow dividends generated by automated labor to be sent directly from AI nodes to displaced workers without relying on a centralized corporate intermediary. While decentralized finance solves certain trust issues in value transfer, the fundamental problem remains if a trusted third party still controls the physical means of production. We propose a solution to the purchasing power crisis by implementing a peer-to-peer network of AI nodes. The system uses open participation, NVIDIA computing hardware, and global TikTok traffic for monetization. Productivity outputs are timestamped by hashing them into an ongoing chain of smart contracts, with compensation routed through a mathematical model in the Aistock100 quantitative pool to ensure transparent and automatic distribution to node managers and network participants.</p>
+            
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">1. Introduction</h2>
+            <p>Traditional economic systems rely almost exclusively on the linear exchange of human labor for wages. This arrangement works adequately for human-driven industries but fails when artificial intelligence dramatically increases marginal productivity. As AI output grows faster than wages, aggregate purchasing power collapses, creating an unsustainable feedback loop.</p>
+            <p>What is needed is an electronic and physical system based on mathematical proof rather than corporate trust. This paper proposes a peer-to-peer network that lets any individual co-own and operate AI nodes, effectively assetizing the means of production. The network timestamps physical productivity outputs by hashing them into a chain of smart contracts, forming a decentralized labor economy.</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">2. The Network</h2>
+            <p>Physical tasks and digital content generation are executed by automated AI nodes powered by NVIDIA computing platforms. Each node is managed locally by a lightweight application. The operational flow is as follows:</p>
+            <ol class="list-decimal pl-6 mb-4 space-y-2 text-slate-700">
+                <li>The node manager app directs hardware operations in real time.</li>
+                <li>The node broadcasts outputs via TikTok APIs, monetizing global traffic directly.</li>
+                <li>Offline payments are recorded locally and periodically synced to the network.</li>
+                <li>All generated revenue is routed to the Aistock100 pool for compounding, according to the manager’s chosen allocation ratio.</li>
+            </ol>
+
+            <h3 class="text-xl font-bold mt-6 mb-4 text-slate-800">3. Node Architecture</h3>
+            <div class="diagram text-center">
+                [Physical Environment] &rarr; [NVIDIA Robot Inference] &rarr; [Node Manager] &rarr; [TikTok Monetization] &rarr; [Aistock100 Pool]
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">3. Productivity and Compounding Model</h2>
+            <p>Hardware depreciates over time and raw labor value fluctuates. To maintain long-term network stability, we define the total output \\(V\\) of a node as the time integral of physical labor \\(L\\) and TikTok traffic revenue \\(T\\), compounded by the average return rate \\(\\bar{r}\\) of the Aistock100 pool:</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[V = \\int_{0}^{t} [L(s) + T(s)] ds \\cdot (1 + \\bar{r})^t\\]</div>
+            <p>To offset hardware depreciation \\(H\\), the treasury reserves \\(R\\) must satisfy the differential equation:</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[\\frac{dR}{dt} = \\alpha V(t) - \\delta H(t)\\]</div>
+            <p>where \\(\\alpha\\) is the proportion allocated to the compounding pool and \\(\\delta\\) is the depreciation rate of the hardware.</p>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">4. Distribution Mechanism (Flexible)</h2>
+            <p>By design, the first transaction of any settled yield is a special transaction that distributes revenue according to predefined smart contract rules. This creates an incentive for nodes to support the network while allowing wealth to circulate freely.</p>
+
+            <div class="dist-flow mb-8 mt-4">
+                <div class="dist-row bg-blue-50 text-blue-700">
+                    <span class="dist-pct">30%</span>
+                    <div>Capital Providers (S<sub>funder</sub>)</div>
+                </div>
+                <div class="dist-row bg-teal-50 text-teal-700">
+                    <span class="dist-pct">30%</span>
+                    <div>Node Managers (S<sub>manager</sub>) - Basic Income</div>
+                </div>
+                <div class="dist-row bg-teal-50 text-teal-700">
+                    <span class="dist-pct">0-30%</span>
+                    <div>
+                        Node Manager (S<sub>manager</sub>) - Aistock100 Pool
+                        <div class="text-sm font-normal mt-1 opacity-90 block">Freely decide reinvestment ratio. No lock-in. If 0% is chosen, basic income goes up to 60% cash.</div>
+                    </div>
+                </div>
+                <div class="dist-row bg-orange-50 text-orange-700">
+                    <span class="dist-pct">10%</span>
+                    <div>DAO Governance & R&D (S<sub>dao</sub>)</div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">5. TikTok Traffic Value Engine</h2>
+            <p>The bot automatically generates and publishes content through edge AI integration with the TikTok API, forming a traffic value function:</p>
+            <div class="diagram text-center text-sm sm:text-lg">\\[G(v) = \\kappa \\cdot v^{\\gamma}, \\quad \\gamma > 1\\]</div>
+            <p>where \\(v\\) is the traffic indicator, and \\(\\gamma\\) is the interaction rate index. The generated income is instantly transferred to the <strong>Aistock100</strong> account, enabling automatic conversion of traffic to capital.</p>
+            
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6 mt-8 sm:mt-10" style="font-family: 'Playfair Display', serif;">6. References</h2>
+            <p class="text-sm text-slate-500 space-y-1">
+                [1] Nakamoto, S. (2008). <i>Bitcoin: A Peer-to-Peer Electronic Cash System.</i><br>
+                [2] NVIDIA Corp. (2025). <i>Edge AI and Robotics: NVIDIA Computing Architecture in Retail Automation.</i><br>
+                [3] Amodei, D. (Anthropic). (2025). <i>The Economic Displacement of Labor in the AI Era.</i><br>
+                [4] Apex Consensus. (2025). <i>Aistock100: Quantifying Algorithmic Compounding in Decentralized Economies.</i><br>
+                [5] Acemoglu, D., & Restrepo, P. (2022). <i>Automation and New Tasks: How Technology Displaces and Reinstates Labor.</i> Journal of Economic Perspectives.<br>
+                [6] Frey, C. B., & Osborne, M. A. (2017). <i>The Future of Employment: How Susceptible Are Jobs to Computerisation?</i> Technological Forecasting and Social Change.
+            </p>
+        `;
+    }
+}
+
+function getOperatingContent(lang) {
+    const d = meta[lang];
+    
+    let html = `
+        <h2 class="text-2xl sm:text-3xl font-black italic mb-6" style="font-family: 'Playfair Display', serif;">營運模式與硬體生態</h2>
+        <p class="text-sm sm:text-lg text-slate-600 mb-8">Apex Claw 不是遙不可及的未來概念。2026 年，硬體生態早已就位，我們結合了商用/居家雙軌場景，打造出具備高流動性的獲利閉環。</p>
+        
+        <h3 class="mb-4 text-blue-800">✅ 支援部署硬體 (⚠️ 示意範例，型號將持續擴充增加)</h3>
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="robot-card p-4">
+                <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Tesla-Bot-AI.jpg" alt="Tesla Optimus" class="robot-img rounded-lg mb-4">
+                <h4 class="font-bold text-base sm:text-lg mb-1">商用雙足人形 (例: Tesla Optimus)</h4>
+                <p class="text-xs sm:text-sm text-slate-500 mb-2">適合高端零售與導購互動，吸引大量 TikTok 流量。</p>
+            </div>
+            <div class="robot-card p-4">
+                <img src="https://i.pcmag.com/imagery/articles/07tGpPe3i4F68L0tyXv3myR-2.fit_lim.size_960x.png" alt="FIGURE 03" class="robot-img rounded-lg mb-4">
+                <h4 class="font-bold text-base sm:text-lg mb-1">商用雙足人形 (例: FIGURE 03)</h4>
+                <p class="text-xs sm:text-sm text-slate-500 mb-2">具備強大通用能力，完美適配工廠或倉儲等多種 RaaS 方案。</p>
+            </div>
+            <div class="robot-card p-4">
+                <img src="https://www.1x.tech/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fqka6yvsc%2Fproduction%2F1054db069547b8a970273c62fa96fb6ae1818e8a-3665x2062.webp&w=3840&q=100" alt="1X NEO" class="robot-img rounded-lg mb-4">
+                <h4 class="font-bold text-base sm:text-lg mb-1">居家陪伴型 (例: 1X NEO)</h4>
+                <p class="text-xs sm:text-sm text-slate-500 mb-2">採用軟性結構設計，專為家庭場景打造，安全且能協助家務。</p>
+            </div>
+        </div>
+
+        <h3 class="mt-8 mb-6"><i class="fas fa-calculator text-blue-600"></i> 單一節點現金流試算 (雙軌制)</h3>
+        <p class="text-xs sm:text-sm text-slate-500 mb-4">* 假設單一硬體與部署成本為 <strong>$23,000 USD</strong>，Aistock100 目標年化為 50%。以下為合約自動結算之 30/30/30/10 試算。</p>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="calc-box">
+                <h4 class="text-blue-800 font-bold mb-4 text-lg sm:text-xl border-b pb-2">場景 A: 商用機器人</h4>
+                <div class="calc-row"><span>實體勞務 (RaaS)</span><span>$599 USD</span></div>
+                <div class="calc-row"><span>預估顧客小費</span><span>$200 USD</span></div>
+                <div class="calc-row"><span>TikTok 流量分潤</span><span>$1,250 USD</span></div>
+                <div class="calc-row text-blue-700"><span>每月總現金流</span><span>$2,049 USD</span></div>
+                
+                <div class="mt-4 mb-2 font-bold text-slate-700">利潤分配：</div>
+                <div class="calc-row text-sm sm:text-base"><span>💸 投資方 (30%)</span><span class="text-green-600 font-bold">+$614.70 / 月</span></div>
+                <div class="calc-row text-sm sm:text-base"><span>🧑‍💼 節點經理 (30%)</span><span class="text-green-600 font-bold">+$614.70 / 月</span></div>
+                <div class="mt-4 pt-4 border-t-2 border-slate-300">
+                    <p class="text-xs sm:text-sm text-slate-600"><strong>📈 Aistock100 複利回本評估：</strong> 每月注入 30% 進入量化池，利用 50% 複利引擎，約在 <strong>第 20 個月 (不到 2 年)</strong> 即可覆蓋 $23,000 的硬體成本。</p>
+                </div>
+            </div>
+
+            <div class="calc-box bg-purple-50 border-purple-200">
+                <h4 class="text-purple-800 font-bold mb-4 text-lg sm:text-xl border-b border-purple-200 pb-2">場景 B: 居家機器人</h4>
+                <div class="calc-row border-purple-200"><span>實體勞務 (RaaS)</span><span>$299 USD</span></div>
+                <div class="calc-row border-purple-200"><span>雇主獎金小費</span><span>$100 USD</span></div>
+                <div class="calc-row border-purple-200"><span>TikTok 短影音</span><span>$600 USD</span></div>
+                <div class="calc-row text-purple-700"><span>每月總現金流</span><span>$999 USD</span></div>
+                
+                <div class="mt-4 mb-2 font-bold text-slate-700">利潤分配：</div>
+                <div class="calc-row border-purple-200 text-sm sm:text-base"><span>💸 投資方 (30%)</span><span class="text-green-600 font-bold">+$299.70 / 月</span></div>
+                <div class="calc-row border-purple-200 text-sm sm:text-base"><span>🧑‍💼 節點經理 (30%)</span><span class="text-green-600 font-bold">+$299.70 / 月</span></div>
+                <div class="mt-4 pt-4 border-t-2 border-purple-300">
+                    <p class="text-xs sm:text-sm text-slate-600"><strong>📈 Aistock100 複利回本評估：</strong> 屬於細水長流型，透過 50% 複利引擎，約在 <strong>第 32 個月</strong> 總額即可覆蓋硬體成本。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-gradient-to-br from-slate-900 to-blue-950 rounded-3xl p-6 md:p-8 text-white shadow-2xl border border-blue-500/30">
+            <h4 class="text-xl sm:text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-2"><i class="fas fa-rocket"></i> ${d.calcTitle}</h4>
+            
+            <div class="text-xs sm:text-sm text-cyan-100/90 border-t border-white/10 pt-4 leading-relaxed font-medium">
+                ${d.calcDesc}
+            </div><br>
+
+            <div class="bg-black/30 p-5 sm:p-6 rounded-2xl mb-6 border border-white/10">
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-xs sm:text-sm text-slate-300 font-medium">${d.calcKeepText}<span id="val-keep" class="font-bold text-emerald-400 ml-1">30</span>%</span>
+                    <label class="font-bold text-blue-200 text-sm sm:text-base">${d.calcRatioText}<span id="val-reinvest" class="text-2xl sm:text-3xl text-white ml-2 drop-shadow-lg">30</span>%</label>
+                </div>
+                <input type="range" id="reinvest-slider" min="0" max="30" step="5" value="30" class="interactive-slider" oninput="updateCalculator()">
+                
+                <div class="flex justify-between mt-6 pt-6 border-t border-white/10">
+                    <div class="text-center w-1/2 border-r border-white/10">
+                        <div class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider mb-1">${d.calcMonthlyIncome}</div>
+                        <div class="text-xl sm:text-3xl font-bold text-emerald-400" id="val-cash-monthly">$3,073</div>
+                    </div>
+                    <div class="text-center w-1/2">
+                        <div class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider mb-1">${d.calcMonthlyPool}</div>
+                        <div class="text-xl sm:text-3xl font-bold text-yellow-400" id="val-pool-monthly">$3,073</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-xl border border-white/10 mb-6 bg-black/20">
+                <table class="w-full text-left border-collapse min-w-[500px]">
+                    <thead>
+                        <tr class="bg-blue-900/50 text-blue-200 text-xs sm:text-sm uppercase tracking-wider">
+                            <th class="p-2 sm:p-4 border-b border-white/10">${d.calcThYear}</th>
+                            <th class="p-2 sm:p-4 border-b border-white/10">${d.calcThCash}</th>
+                            <th class="p-2 sm:p-4 border-b border-white/10">${d.calcThTotal}</th>
+                            <th class="p-2 sm:p-4 border-b border-white/10 text-yellow-300">${d.calcThPool}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calc-tbody" class="text-xs sm:text-sm font-mono text-slate-200">
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="text-xs sm:text-sm text-cyan-100/90 border-t border-white/10 pt-4 leading-relaxed font-medium">
+                ${d.calcDisclaimer}
+            </div>
+        </div>
+    `;
+
+    if (lang === 'zh-CN') {
+        html = html.replace(/營運模式與硬體生態/g, "运营模式与硬件生态");
+        html = html.replace(/Apex Claw 不是遙不可及的未來概念/g, "Apex Claw 不是遥不可及的未来概念");
+        html = html.replace(/支援部署硬體/g, "支持部署硬件");
+        html = html.replace(/示意範例/g, "示意范例");
+        html = html.replace(/商用雙足人形/g, "商用双足人形");
+        html = html.replace(/居家陪伴型/g, "居家陪伴型");
+        html = html.replace(/單一節點現金流試算/g, "单一节点现金流试算");
+        html = html.replace(/場景/g, "场景");
+        html = html.replace(/實體勞務/g, "实体劳务");
+        html = html.replace(/預估顧客小費/g, "小费预估");
+        html = html.replace(/雇主獎金小費/g, "雇主奖金小费");
+        html = html.replace(/流量分潤/g, "流量分润");
+        html = html.replace(/短影音/g, "短视频");
+        html = html.replace(/每月總現金流/g, "每月总现金流");
+        html = html.replace(/利潤分配/g, "利润分配");
+        html = html.replace(/投資方/g, "投资方");
+        html = html.replace(/節點經理/g, "节点经理");
+        html = html.replace(/複利回本評估/g, "复利回本评估");
+        html = html.replace(/適合高端零售與導購互動，吸引大量 TikTok 流量。/g, "适合高端零售与导购互动，吸引大量 TikTok 流量。");
+        html = html.replace(/具備強大通用能力，完美適配工廠或倉儲等多種 RaaS 方案。/g, "具备强大通用能力，完美适配工厂或仓储等多种 RaaS 方案。");
+        html = html.replace(/採用軟性結構設計，專為家庭場景打造，安全且能協助家務。/g, "采用软性结构设计，专为家庭场景打造，安全且能协助家务。");
+        html = html.replace(/屬於細水長流型，透過 50% 複利引擎，約在 <strong>第 32 個月<\/strong> 總額即可覆蓋硬體成本。/g, "属于细水长流型，透过 50% 复利引擎，约在 <strong>第 32 个月</strong> 总额即可覆盖硬件成本。");
+    } else if (lang === 'en') {
+        html = html.replace(/營運模式與硬體生態/g, "Operating Model & Hardware Ecosystem");
+        html = html.replace(/Apex Claw 不是遙不可及的未來概念。2026 年，硬體生態早已就位，我們結合了商用\/居家雙軌場景，打造出具備高流動性的獲利閉環。/g, "Apex Claw combines physical labor, hardware compute, social traffic, and quantitative finance into a high-liquidity closed loop.");
+        html = html.replace(/✅ 支援部署硬體 \(⚠️ 示意範例，型號將持續擴充增加\)/g, "✅ Supported Hardware Examples (Continuously Expanding)");
+        html = html.replace(/商用雙足人形 \(例: Tesla Optimus\)/g, "Commercial Bipedal (e.g., Tesla Optimus)");
+        html = html.replace(/商用雙足人形 \(例: FIGURE 03\)/g, "Commercial Bipedal (e.g., FIGURE 03)");
+        html = html.replace(/居家陪伴型 \(例: 1X NEO\)/g, "Home Assistant (e.g., 1X NEO)");
+        html = html.replace(/單一節點現金流試算 \(雙軌制\)/g, "Performance & Compounding Projection (Dual Track)");
+        html = html.replace(/\* 假設單一硬體與部署成本為 <strong>\$23,000 USD<\/strong>，Aistock100 目標年化為 50%。以下為合約自動結算之 30\/30\/30\/10 試算。/g, "* Assuming a single hardware and deployment cost of <strong>$23,000 USD</strong>, with an Aistock100 target APY of 50%. Below is the 30/30/30/10 projection.");
+        html = html.replace(/場景 A: 商用機器人/g, "Track A: Business Robot");
+        html = html.replace(/場景 B: 居家機器人/g, "Track B: Home Robot");
+        html = html.replace(/實體勞務 \(RaaS\)/g, "Physical Labor (RaaS)");
+        html = html.replace(/預估顧客小費/g, "Est. Tips");
+        html = html.replace(/雇主獎金小費/g, "Est. Bonus");
+        html = html.replace(/TikTok 流量分潤/g, "TikTok Revenue");
+        html = html.replace(/TikTok 短影音/g, "TikTok Revenue");
+        html = html.replace(/每月總現金流/g, "Monthly Gross Flow");
+        html = html.replace(/利潤分配/g, "Distribution");
+        html = html.replace(/投資方/g, "Funder");
+        html = html.replace(/節點經理/g, "Manager");
+        html = html.replace(/ \/ 月/g, " / Month");
+        html = html.replace(/<strong>📈 Aistock100 複利回本評估：<\/strong> 每月注入 30% 進入量化池，利用 50% 複利引擎，約在 <strong>第 20 個月 \(不到 2 年\)<\/strong> 即可覆蓋 \$23,000 的硬體成本。/g, "<strong>📈 Aistock100 ROI Assessment:</strong> By injecting 30% monthly into the quant pool and utilizing the 50% compounding engine, the $23,000 hardware cost can be covered in about <strong>Month 20 (less than 2 years)</strong>.");
+        html = html.replace(/<strong>📈 Aistock100 複利回本評估：<\/strong> 屬於細水長流型，透過 50% 複利引擎，約在 <strong>第 32 個月<\/strong> 總額即可覆蓋硬體成本。/g, "<strong>📈 Aistock100 ROI Assessment:</strong> As a steady-stream model, utilizing the 50% compounding engine, the total value can cover the hardware cost in about <strong>Month 32</strong>.");
+        html = html.replace(/適合高端零售與導購互動，吸引大量 TikTok 流量。/g, "Ideal for high-end retail and interactive shopping, attracting massive TikTok traffic.");
+        html = html.replace(/具備強大通用能力，完美適配工廠或倉儲等多種 RaaS 方案。/g, "Features powerful general-purpose capabilities, perfectly suited for factories or warehouses.");
+        html = html.replace(/採用軟性結構設計，專為家庭場景打造，安全且能協助家務。/g, "Uses a soft-structure design, built specifically for home scenarios, safe and capable of assisting with chores.");
+    }
+
+    return html;
+}
+
+function getFaqContent(lang) {
+    if (lang === 'zh-TW') {
+        return `
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-6" style="font-family: 'Playfair Display', serif;">常見問題</h2>
+            <p class="text-sm sm:text-lg text-slate-600 mb-8">針對參與者最關心的管理時間、退出機制與防弊規範，解答如下：</p>
+            
+            <div class="faq-card">
+                <h4><i class="fas fa-chart-pie text-blue-500"></i> Q1: 我一定要把收益投入 Aistock100 複利池嗎？</h4>
+                <p class="text-sm sm:text-base text-slate-600"><strong>不需要，完全自由決定。</strong> 協議沒有任何綁約限制。身為節點經理或投資方，您可以自由選擇將 0% 到 30% 的利潤單元投入複利池。如果您選擇 0%，代表您每個月將直接領取高達 60% 的現金分潤。但我們強烈建議投入複利池，以享受長期的指數型增值。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-clock text-teal-500"></i> Q2: 我需要每天花很多時間管理機器人嗎？</h4>
+                <p class="text-sm sm:text-base text-slate-600">完全不需要。日常運作皆由 AI 與雲端自動排程。您只需在收到「緊急推播通知」時依照固定指示進行簡單排除（例如重開機或清理感測器）。若遇重大硬體故障，公司會直接派駐當地維修人員處理，不會佔用您的日常時間。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-door-open text-purple-500"></i> Q3: 我可以隨時退出計畫嗎？退出後收益會中斷嗎？</h4>
+                <p class="text-sm sm:text-base text-slate-600">您可以隨時退出（解除硬體綁定），且退出後您在 Aistock100 複利池中的資金「不會停止增長」！除非您主動提領出金，否則資金將持續量化交易。舉例來說：若您參與並管理節點 5 年後決定退休退出，您依然可以靠著這 5 年累積在資金池內的本金，持續領取後續 10 年甚至更久的被動分紅。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-users text-green-500"></i> Q4: 節點經理可以同時管理多台機器人以增加獲利嗎？</h4>
+                <p class="text-sm sm:text-base text-slate-600 mb-2">為保障名額分散並兼顧品質，協議制定了<strong>階梯式管理上限防弊機制</strong>：</p>
+                <ul class="list-disc pl-5 text-sm sm:text-base text-slate-600 space-y-1">
+                    <li><strong>新手期 (上限 1 台)：</strong> 專注學習 App 操作與 TikTok 導流技巧。</li>
+                    <li><strong>進階期 (上限 3 台)：</strong> 當經理的「節點健康分數」(如在線率 > 98%) 連續 3 個月達標後解鎖。</li>
+                    <li><strong>防壟斷硬性上限 (絕對上限 5 台)：</strong> 一人極限管理 5 台。超過的需求將強制分配給等候名單 (Waitlist) 上的新會員。</li>
+                </ul>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-dollar-sign text-yellow-500"></i> Q5: 初始投資成本是多少？資金如何運用？</h4>
+                <p class="text-sm sm:text-base text-slate-600">單台商用機器人的硬體與部署成本約為 $23,000 USD。此費用涵蓋硬體購置、NVIDIA 運算模組、初始部署與軟體授權。資金提供者 (Funder) 承擔此成本，並透過 30% 的收益分潤回收投資。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-shield-alt text-red-500"></i> Q6: 我的資金安全嗎？有哪些風險？</h4>
+                <p class="text-sm sm:text-base text-slate-600">所有資金流動均透過智能合約自動執行，減少人為操控風險。然而，如同所有投資，仍存在硬體損壞、市場波動、TikTok 政策變動等風險。Aistock100 複利池的歷史 50% APY 不保證未來表現。建議僅投入可承受損失的資金。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-globe text-indigo-500"></i> Q7: 任何國家的人都可以參與嗎？</h4>
+                <p class="text-sm sm:text-base text-slate-600">Apex Claw 協議採用去中心化設計，原則上全球開放。但各地區法規不同，參與者需自行確認當地法律合規性。目前優先部署節點的地區包括北美、東南亞與台灣。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-robot text-cyan-500"></i> Q8: 機器人實際做什麼工作？</h4>
+                <p class="text-sm sm:text-base text-slate-600">商用機器人主要從事零售服務（如商場導覽、互動購物）、倉儲物流、以及透過 TikTok 直播/短影音產生流量收入。家用機器人則提供居家清掃、整理等服務。所有操作由 NVIDIA 推論引擎驅動的 AI 自動執行。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-chart-line text-emerald-500"></i> Q9: Aistock100 量化池的運作原理是什麼？</h4>
+                <p class="text-sm sm:text-base text-slate-600">Aistock100 是一個 AI 驅動的量化交易資金池，透過演算法自動執行多策略交易。歷史平均年化報酬約 50%，但實際回報受市場環境影響。投入的資金會自動複利，您可隨時查看池內餘額與收益紀錄。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-hands-helping text-pink-500"></i> Q10: DAO 治理是什麼？我有投票權嗎？</h4>
+                <p class="text-sm sm:text-base text-slate-600">10% 的收益分配給 DAO 治理與技術研發。所有活躍的節點經理均擁有投票權，可參與協議升級、新硬體採購、收益分配比例調整等決策。一台節點 = 一票，確保公平治理。</p>
+            </div>
+        `;
+    } else if (lang === 'zh-CN') {
+        return `
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-6" style="font-family: 'Playfair Display', serif;">常见问题</h2>
+            <p class="text-sm sm:text-lg text-slate-600 mb-8">针对参与者最关心的管理时间、退出机制与防弊规范，解答如下：</p>
+            
+            <div class="faq-card">
+                <h4><i class="fas fa-chart-pie text-blue-500"></i> Q1: 我一定要把收益投入 Aistock100 复利池吗？</h4>
+                <p class="text-sm sm:text-base text-slate-600"><strong>不需要，完全自由决定。</strong> 协议没有任何绑约限制。身为节点经理或投资方，您可以自由选择将 0% 到 30% 的利润单元投入复利池。如果您选择 0%，代表您每个月将直接领取高达 60% 的现金分润。但我们强烈建议投入复利池，以享受长期的指数型增值。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-clock text-teal-500"></i> Q2: 需要每天花很多时间管理机器人吗？</h4>
+                <p class="text-sm sm:text-base text-slate-600">完全不需要。日常运作皆由 AI 自动排程。您只需在收到「紧急通知」时依照固定指示进行简单排除。若遇重大故障，公司会直接派驻维修人员处理，不占用您的日常时间。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-door-open text-purple-500"></i> Q3: 我可以随时退出计划吗？退出后收益会中断吗？</h4>
+                <p class="text-sm sm:text-base text-slate-600">您可以随时退出。且您在 Aistock100 复利池中的资金「不会停止增长」！除非您主动提领，否则资金将持续量化交易。举例来说：您参与 5 年后决定退休退出，您依然可以靠着累积在资金池内的本金，持续领取后续 10 年甚至更久的被动分红。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-users text-green-500"></i> Q4: 节点经理可以同时管理多台机器人吗？</h4>
+                <p class="text-sm sm:text-base text-slate-600 mb-2">为保障名额分散并控制服务质量，协议制定了<strong>阶梯式管理上限防弊机制</strong>：</p>
+                <ul class="list-disc pl-5 text-sm sm:text-base text-slate-600 space-y-1">
+                    <li><strong>新手期 (上限 1 台)：</strong> 专注学习 App 操作与引流。</li>
+                    <li><strong>进阶期 (上限 3 台)：</strong> 健康分数连续 3 个月达标后解锁。</li>
+                    <li><strong>硬性上限 (绝对不超过 5 台)：</strong> 超过的需求将强制分配给等候名单上的新会员，避免垄断。</li>
+                </ul>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-dollar-sign text-yellow-500"></i> Q5: 初始投资成本是多少？资金如何运用？</h4>
+                <p class="text-sm sm:text-base text-slate-600">单台商用机器人的硬件与部署成本约为 $23,000 USD。此费用涵盖硬件购置、NVIDIA 运算模块、初始部署与软件授权。资金提供者 (Funder) 承担此成本，并通过 30% 的收益分润回收投资。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-shield-alt text-red-500"></i> Q6: 我的资金安全吗？有哪些风险？</h4>
+                <p class="text-sm sm:text-base text-slate-600">所有资金流动均通过智能合约自动执行，减少人为操控风险。然而，如同所有投资，仍存在硬件损坏、市场波动、TikTok 政策变动等风险。Aistock100 复利池的历史 50% APY 不保证未来表现。建议仅投入可承受损失的资金。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-globe text-indigo-500"></i> Q7: 任何国家的人都可以参与吗？</h4>
+                <p class="text-sm sm:text-base text-slate-600">Apex Claw 协议采用去中心化设计，原则上全球开放。但各地区法规不同，参与者需自行确认当地法律合规性。目前优先部署节点的地区包括北美、东南亚与台湾。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-robot text-cyan-500"></i> Q8: 机器人实际做什么工作？</h4>
+                <p class="text-sm sm:text-base text-slate-600">商用机器人主要从事零售服务（如商场导览、互动购物）、仓储物流、以及通过 TikTok 直播/短视频产生流量收入。家用机器人则提供居家清扫、整理等服务。所有操作由 NVIDIA 推理引擎驱动的 AI 自动执行。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-chart-line text-emerald-500"></i> Q9: Aistock100 量化池的运作原理是什么？</h4>
+                <p class="text-sm sm:text-base text-slate-600">Aistock100 是一个 AI 驱动的量化交易资金池，通过算法自动执行多策略交易。历史平均年化回报约 50%，但实际回报受市场环境影响。投入的资金会自动复利，您可随时查看池内余额与收益记录。</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-hands-helping text-pink-500"></i> Q10: DAO 治理是什么？我有投票权吗？</h4>
+                <p class="text-sm sm:text-base text-slate-600">10% 的收益分配给 DAO 治理与技术研发。所有活跃的节点经理均拥有投票权，可参与协议升级、新硬件采购、收益分配比例调整等决策。一台节点 = 一票，确保公平治理。</p>
+            </div>
+        `;
+    } else {
+        return `
+            <h2 class="text-2xl sm:text-3xl font-black italic mb-6" style="font-family: 'Playfair Display', serif;">FAQ</h2>
+            <p class="text-sm sm:text-lg text-slate-600 mb-8">Answers to common questions regarding time commitment, exit strategies, and anti-monopoly rules:</p>
+            
+            <div class="faq-card">
+                <h4><i class="fas fa-chart-pie text-blue-500"></i> Q1: Am I forced to reinvest my earnings into the Aistock100 pool?</h4>
+                <p class="text-sm sm:text-base text-slate-600"><strong>No, it is completely optional.</strong> There are no lock-in contracts. You can freely choose a reinvestment ratio between 0% and 30%. If you choose 0%, you directly take up to 60% of the revenue in cash. However, reinvesting is highly recommended to benefit from exponential growth.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-clock text-teal-500"></i> Q2: Do I need to spend a lot of time managing the robot daily?</h4>
+                <p class="text-sm sm:text-base text-slate-600">Not at all. Daily operations are automated by AI. You only need to intervene if you receive an "Emergency Alert" with fixed troubleshooting steps (e.g., restarting or cleaning a sensor). For critical hardware issues, the company will dispatch a technician directly. It won't consume your daily schedule.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-door-open text-purple-500"></i> Q3: Can I exit the program at any time? Will my earnings stop?</h4>
+                <p class="text-sm sm:text-base text-slate-600">You can exit (unbind from the hardware) at any time. However, your funds in the Aistock100 compounding pool will <strong>continue to grow</strong>! Unless you withdraw, the system keeps trading. For example: If you participate for 5 years and then retire, you can still draw passive dividends for 10+ years from the capital accumulated in the pool during your active years.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-users text-green-500"></i> Q4: Can a Node Manager control many robots to maximize profit?</h4>
+                <p class="text-sm sm:text-base text-slate-600 mb-2">To ensure fair distribution and maintain quality, the protocol enforces a <strong>tiered management limit</strong>:</p>
+                <ul class="list-disc pl-5 text-sm sm:text-base text-slate-600 space-y-1">
+                    <li><strong>Novice (Max 1 Node):</strong> Focus on learning operations.</li>
+                    <li><strong>Pro (Max 3 Nodes):</strong> Unlocked after maintaining high health scores for 3 months.</li>
+                    <li><strong>Hard Cap (Strictly Max 5 Nodes):</strong> Prevents monopoly. Excess demand is routed to new members on the Waitlist.</li>
+                </ul>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-dollar-sign text-yellow-500"></i> Q5: What is the initial investment cost and how are funds used?</h4>
+                <p class="text-sm sm:text-base text-slate-600">Each commercial robot costs approximately $23,000 USD, covering hardware, NVIDIA compute modules, initial deployment, and software licensing. The Funder bears this cost and recovers their investment through a 30% revenue share allocation.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-shield-alt text-red-500"></i> Q6: Is my capital safe? What are the risks?</h4>
+                <p class="text-sm sm:text-base text-slate-600">All fund flows are executed automatically via smart contracts, reducing manipulation risk. However, like all investments, risks include hardware damage, market volatility, and TikTok policy changes. The historical 50% APY of the Aistock100 pool does not guarantee future performance. Only invest what you can afford to lose.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-globe text-indigo-500"></i> Q7: Can anyone from any country participate?</h4>
+                <p class="text-sm sm:text-base text-slate-600">Apex Claw is designed as a decentralized protocol, open globally in principle. However, regulations vary by region and participants must verify local compliance. Priority deployment regions include North America, Southeast Asia, and Taiwan.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-robot text-cyan-500"></i> Q8: What work do the robots actually perform?</h4>
+                <p class="text-sm sm:text-base text-slate-600">Commercial robots handle retail services (mall navigation, interactive shopping), warehouse logistics, and generate traffic revenue through TikTok livestreaming and short-form video content. Home robots provide cleaning and organizing services. All operations are driven by NVIDIA-powered AI inference engines.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-chart-line text-emerald-500"></i> Q9: How does the Aistock100 quantitative pool work?</h4>
+                <p class="text-sm sm:text-base text-slate-600">Aistock100 is an AI-driven quantitative trading fund that algorithmically executes multi-strategy trades. Historical average annualized returns are approximately 50%, but actual returns depend on market conditions. Invested funds compound automatically, and you can view your pool balance and earnings history at any time.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fas fa-hands-helping text-pink-500"></i> Q10: What is DAO governance? Do I have voting rights?</h4>
+                <p class="text-sm sm:text-base text-slate-600">10% of revenue is allocated to DAO governance and R&D. All active Node Managers have voting rights and can participate in decisions about protocol upgrades, new hardware acquisitions, and revenue distribution adjustments. One node = one vote, ensuring fair governance.</p>
+            </div>
+        `;
+    }
+}
+
+function renderContent() {
+    let contentHtml = '';
+    
+    if (currentTab === 'whitepaper') {
+        contentHtml = getWhitepaperContent(currentLang) + 
+                      '<div class="my-16 w-full h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>' + 
+                      getOperatingContent(currentLang) +
+                      `<div class="mt-12 text-slate-700 text-base sm:text-lg leading-relaxed border-l-4 border-blue-500 pl-4 py-3 bg-slate-50 rounded-r-lg shadow-sm">
+                          ${meta[currentLang].conclusionText}
+                      </div>`;
+    }
+    else if (currentTab === 'operating') {
+        contentHtml = getOperatingContent(currentLang) +
+                      `<div class="mt-12 text-slate-700 text-base sm:text-lg leading-relaxed border-l-4 border-blue-500 pl-4 py-3 bg-slate-50 rounded-r-lg shadow-sm">
+                          ${meta[currentLang].conclusionText}
+                      </div>`;
+    }
+    else {
+        contentHtml = getFaqContent(currentLang);
+    }
+    
+    document.getElementById('dynamic-body').innerHTML = contentHtml;
+    
+    const d = meta[currentLang];
+    document.getElementById('tab-whitepaper').innerText = d.tabWhitepaper;
+    document.getElementById('tab-operating').innerText = d.tabOperating;
+    document.getElementById('tab-faq').innerText = d.tabFaq;
+
+    if (window.MathJax) {
+        MathJax.typesetPromise().catch((err) => console.log('MathJax error: ', err));
+    }
+
+    if (currentTab === 'whitepaper' || currentTab === 'operating') {
+        setTimeout(() => { updateCalculator(); }, 50);
+    }
+}
+
+function switchTab(tabId) {
+    currentTab = tabId;
+    document.getElementById('tab-whitepaper').className = tabId === 'whitepaper' ? 'tab-btn active whitespace-nowrap' : 'tab-btn inactive whitespace-nowrap';
+    document.getElementById('tab-operating').className = tabId === 'operating' ? 'tab-btn active whitespace-nowrap' : 'tab-btn inactive whitespace-nowrap';
+    document.getElementById('tab-faq').className = tabId === 'faq' ? 'tab-btn active whitespace-nowrap' : 'tab-btn inactive whitespace-nowrap';
+    renderContent();
+}
+
+function switchLang(lang) {
+    currentLang = lang;
+    const d = meta[lang];
+    document.documentElement.lang = lang; 
+    
+    document.getElementById('hero-title').innerHTML = d.heroTitle;
+    document.getElementById('hero-subtitle').innerText = d.heroSubtitle;
+    document.getElementById('btn-read').innerText = d.btnRead;
+    document.getElementById('btn-join').innerText = d.btnJoin;
+    document.getElementById('stat-cap').innerText = d.statCap;
+    document.getElementById('stat-prof').innerText = d.statProf;
+    document.getElementById('download-title').innerText = d.dlTitle;
+    document.getElementById('footer-copy').innerText = d.footerCopy;
+    document.getElementById('footer-motto').innerText = d.footerMotto;
+    document.getElementById('disclaimer-text').innerText = d.disclaimer;
+    document.getElementById('waitlist-title').innerText = d.waitlistTitle;
+    document.getElementById('waitlist-desc').innerText = d.waitlistDesc;
+    document.getElementById('waitlist-btn').innerText = d.waitlistBtn;
+    document.getElementById('waitlist-privacy').innerText = d.waitlistPrivacy;
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    let btnId = lang === 'en' ? 'btn-en' : (lang === 'zh-TW' ? 'btn-tw' : 'btn-cn');
+    document.getElementById(btnId).classList.add('active');
+
+    renderContent();
+}
+
+function handleWaitlist(e) {
+    e.preventDefault();
+    const d = meta[currentLang];
+    const form = document.getElementById('waitlist-form');
+    const email = form.querySelector('input[type="email"]').value;
+    // Store locally (replace with real backend later)
+    const waitlist = JSON.parse(localStorage.getItem('apex_waitlist') || '[]');
+    waitlist.push({ email, timestamp: new Date().toISOString(), lang: currentLang });
+    localStorage.setItem('apex_waitlist', JSON.stringify(waitlist));
+    form.innerHTML = `<div class="text-cyan-400 font-bold text-lg py-4"><i class="fas fa-check-circle mr-2"></i>${d.waitlistSuccess}</div>`;
+}
+
+window.onload = () => {
+    switchLang('en');
+    runTickers();
+    runLogs();
+};
+</script>
+<!-- Cloudflare Web Analytics (keep this if using Cloudflare) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"452a008c83b04c3e92a9cf365292ea57"}'></script>
+</body>
+</html>
