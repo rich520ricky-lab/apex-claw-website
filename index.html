@@ -224,7 +224,7 @@
                 <button type="submit" class="px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25 text-sm whitespace-nowrap" id="waitlist-btn">Join Waitlist</button>
             </div>
         </form>
-        <p class="text-slate-500 text-xs sm:text-sm mt-4" id="waitlist-privacy">We respect your privacy. Email us to unsubscribe at any time.</p>
+        <p class="text-slate-400 text-sm sm:text-base mt-4" id="waitlist-privacy">We respect your privacy. Email us to unsubscribe at any time.</p>
     </div>
 </section>
 
@@ -1139,7 +1139,7 @@ function handleWaitlist(e) {
     fetch(GOOGLE_SHEET_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(payload)
     }).then(() => {
         form.innerHTML = `<div class="text-cyan-400 font-bold text-lg py-4"><i class="fas fa-check-circle mr-2"></i>${d.waitlistSuccess}</div>`;
