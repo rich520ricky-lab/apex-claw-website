@@ -177,12 +177,12 @@
             </div>
             <div class="mb-10 sm:mb-12 bg-yellow-500/10 border border-yellow-400/30 rounded-xl px-4 py-2.5 text-[10px] sm:text-xs text-yellow-200/80 leading-relaxed" id="disclaimer-box">
                 <i class="fas fa-exclamation-triangle mr-1.5 text-yellow-400"></i>
-                <span id="disclaimer-text">Disclaimer: All values shown are simulated for demonstration purposes only and do not represent actual returns. Past performance does not guarantee future results. Participation involves risk.</span>
+                <span id="disclaimer-text">Disclaimer: All values shown are simulated for demonstration purposes only and do not represent actual returns. Past performance does not guarantee future results.</span>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
                 <button onclick="switchTab('whitepaper'); document.getElementById('whitepaper-section').scrollIntoView({behavior: 'smooth'});" class="w-full sm:w-auto text-center bg-white text-blue-800 px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:scale-105 transition-transform" id="btn-read">Read Whitepaper</button>
-                <a href="mailto:contact@aistock100.org" class="w-full sm:w-auto text-center border-2 border-white/20 hover:border-white text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all" id="btn-join">Contact Us</a>
+                <button onclick="document.getElementById('waitlist-section').scrollIntoView({behavior: 'smooth'});" class="w-full sm:w-auto text-center border-2 border-cyan-400/50 hover:border-cyan-400 text-cyan-300 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all" id="btn-join-waitlist">Join Waitlist</button>
             </div>
         </div>
         <div class="lg:col-span-2 text-white">
@@ -196,6 +196,37 @@
         </div>
     </div>
 </header>
+
+<section class="bg-gradient-to-b from-slate-950 to-slate-900 py-12 sm:py-16 text-center" id="waitlist-section">
+    <div class="max-w-2xl mx-auto px-6">
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-4 italic" style="font-family: 'Playfair Display', serif;" id="waitlist-title">Join the Waitlist</h2>
+        <p class="text-slate-400 mb-6 text-sm sm:text-base" id="waitlist-desc">Be among the first to join the Apex Claw Protocol. Select your role and enter your email to stay updated.</p>
+        <form id="waitlist-form" class="flex flex-col gap-4 max-w-lg mx-auto" onsubmit="handleWaitlist(event)">
+            <div class="flex flex-col gap-2">
+                <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider text-left" id="waitlist-role-label">Select your role:</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="role" value="funder" required class="peer hidden">
+                        <div class="px-4 py-3 rounded-xl bg-slate-800 border-2 border-slate-700 text-slate-400 text-sm font-semibold peer-checked:border-cyan-400 peer-checked:text-cyan-300 peer-checked:bg-cyan-500/10 transition-all hover:border-slate-500">
+                            <i class="fas fa-hand-holding-usd mr-1.5"></i><span id="waitlist-role-funder-text">Funder (30%)</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="role" value="node_manager" required class="peer hidden">
+                        <div class="px-4 py-3 rounded-xl bg-slate-800 border-2 border-slate-700 text-slate-400 text-sm font-semibold peer-checked:border-cyan-400 peer-checked:text-cyan-300 peer-checked:bg-cyan-500/10 transition-all hover:border-slate-500">
+                            <i class="fas fa-robot mr-1.5"></i><span id="waitlist-role-manager-text">Node Manager (30%)</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="email" required placeholder="your@email.com" class="flex-1 px-5 py-3.5 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 text-sm">
+                <button type="submit" class="px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25 text-sm whitespace-nowrap" id="waitlist-btn">Join Waitlist</button>
+            </div>
+        </form>
+        <p class="text-slate-600 text-[10px] mt-4" id="waitlist-privacy">We respect your privacy. Unsubscribe at any time.</p>
+    </div>
+</section>
 
 <main class="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 sm:-mt-16 pb-20 relative z-20" id="whitepaper-section">
     <div class="bg-white rounded-3xl sm:rounded-[40px] p-6 sm:p-10 md:p-16 shadow-2xl border border-slate-100">
@@ -220,18 +251,6 @@
         </div>
     </div>
 </main>
-
-<section class="bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20 text-center" id="waitlist-section">
-    <div class="max-w-2xl mx-auto px-6">
-        <h2 class="text-2xl sm:text-3xl font-black text-white mb-4 italic" style="font-family: 'Playfair Display', serif;" id="waitlist-title">Join the Waitlist</h2>
-        <p class="text-slate-400 mb-8 text-sm sm:text-base" id="waitlist-desc">Be among the first to participate as a Node Manager when Apex Claw launches. Enter your email to stay updated.</p>
-        <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="handleWaitlist(event)">
-            <input type="email" required placeholder="your@email.com" class="flex-1 px-5 py-3.5 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 text-sm">
-            <button type="submit" class="px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25 text-sm whitespace-nowrap" id="waitlist-btn">Join Waitlist</button>
-        </form>
-        <p class="text-slate-600 text-[10px] mt-4" id="waitlist-privacy">We respect your privacy. Unsubscribe at any time.</p>
-    </div>
-</section>
 
 <footer class="bg-slate-950 text-slate-500 py-12 sm:py-16">
     <div class="max-w-5xl mx-auto px-6">
@@ -258,7 +277,10 @@
                     <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="TikTok"><i class="fab fa-tiktok"></i></a>
                     <a href="#" class="text-slate-500 hover:text-cyan-400 transition-colors text-lg" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
-                <p class="text-xs"><a href="mailto:contact@aistock100.org" class="hover:text-cyan-400 transition-colors">contact@aistock100.org</a></p>
+                <div class="flex items-center gap-3">
+                    <p class="text-xs"><a href="mailto:contact@aistock100.org" class="hover:text-cyan-400 transition-colors">contact@aistock100.org</a></p>
+                    <a href="mailto:contact@aistock100.org" class="text-[10px] px-3 py-1.5 border border-slate-700 rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors" id="btn-contact-team">Contact Team</a>
+                </div>
             </div>
         </div>
         <div class="border-t border-slate-800 pt-6 text-center">
@@ -303,7 +325,6 @@ const meta = {
         heroTitle: 'Peer-to-Peer AI Ownership',
         heroSubtitle: 'Empowering workers displaced by AI to become owners of AI robots, capturing the value of automation.',
         btnRead: 'Read Protocol',
-        btnJoin: 'Contact Us',
         statCap: 'Total Value (USD) *Simulated',
         statProf: 'Daily Dividend (USD) *Simulated',
         dlTitle: 'Download Full Whitepaper',
@@ -325,10 +346,14 @@ const meta = {
         calcRowYear: 'Year ',
         calcDisclaimer: '* Note: This projection is based on the average historical annualized return (50% APY) of the Aistock100 strategy and does not guarantee future results.',
         conclusionText: 'Apex Claw proposes a decentralized solution to ensure the production dividends of the AI era are not concentrated in a few centralized entities, but shared universally through open participation and mathematical mechanisms. We believe this protocol can effectively mitigate the purchasing power crisis caused by automation and provide a viable infrastructure for the coexistence of AI and humanity.',
-        disclaimer: 'Disclaimer: All values shown are simulated for demonstration purposes only and do not represent actual returns. Past performance does not guarantee future results. Participation involves risk.',
+        disclaimer: 'Disclaimer: All values shown are simulated for demonstration purposes only and do not represent actual returns. Past performance does not guarantee future results.',
         waitlistTitle: 'Join the Waitlist',
-        waitlistDesc: 'Be among the first to participate as a Node Manager when Apex Claw launches. Enter your email to stay updated.',
+        waitlistDesc: 'Be among the first to join the Apex Claw Protocol. Select your role and enter your email to stay updated.',
         waitlistBtn: 'Join Waitlist',
+        waitlistRoleFunder: 'Funder (30%)',
+        waitlistRoleManager: 'Node Manager (30%)',
+        waitlistRoleLabel: 'Select your role:',
+        contactTeam: 'Contact Team',
         waitlistPrivacy: 'We respect your privacy. Unsubscribe at any time.',
         waitlistSuccess: 'Thank you! You have been added to the waitlist.'
     },
@@ -336,7 +361,6 @@ const meta = {
         heroTitle: '點對點 AI 擁有權協議',
         heroSubtitle: '讓受 AI 影響的勞工成為機器人的主人，開創共享繁榮的新時代。',
         btnRead: '閱讀協議白皮書',
-        btnJoin: '聯繫團隊',
         statCap: '累積生產價值 (USD) *模擬中',
         statProf: '今日分潤總額 (USD) *模擬中',
         dlTitle: '下載 Apex Claw 完整技術白皮書 (英文)',
@@ -358,10 +382,14 @@ const meta = {
         calcRowYear: '第 {y} 年',
         calcDisclaimer: '* 註：此預測是基於 Aistock100 策略的平均歷史年化報酬率 (50% APY) 進行的複利計算，不保證未來結果。',
         conclusionText: 'Apex Claw 提出一種去中心化解決方案，讓 AI 時代的生產紅利不再集中於少數中心化實體，而是透過開放參與與數學機制實現全民共享。我們相信，此協議能有效緩解自動化帶來的購買力危機，並為 AI 與人類共存提供可行的基礎設施。',
-        disclaimer: '免責聲明：所有顯示的數值僅為模擬展示用途，不代表實際收益。過去表現不保證未來結果。參與涉及風險。',
+        disclaimer: '免責聲明：所有顯示的數值僅為模擬展示用途，不代表實際收益。過去表現不保證未來結果。',
         waitlistTitle: '加入等候名單',
-        waitlistDesc: '成為 Apex Claw 正式啟動後的首批節點經理。輸入您的 Email 以獲取最新進度通知。',
+        waitlistDesc: '搶先加入 Apex Claw 協議。選擇您的角色並輸入 Email 以獲取最新進度通知。',
         waitlistBtn: '加入等候名單',
+        waitlistRoleFunder: '投資方 (30%)',
+        waitlistRoleManager: '節點經理 (30%)',
+        waitlistRoleLabel: '選擇您的角色：',
+        contactTeam: '聯繫團隊',
         waitlistPrivacy: '我們尊重您的隱私。您可隨時取消訂閱。',
         waitlistSuccess: '感謝您！已成功加入等候名單。'
     },
@@ -369,7 +397,6 @@ const meta = {
         heroTitle: '点对点 AI 拥有权协议',
         heroSubtitle: '让受 AI 影响的劳工成为机器人的主人，开创共享繁荣的新时代。',
         btnRead: '阅读协议白皮书',
-        btnJoin: '联系团队',
         statCap: '累计生产价值 (USD) *模拟中',
         statProf: '今日分润总额 (USD) *模拟中',
         dlTitle: '下载 Apex Claw 完整技术白皮书 (英文)',
@@ -391,10 +418,14 @@ const meta = {
         calcRowYear: '第 {y} 年',
         calcDisclaimer: '* 注：此预测是基于 Aistock100 策略的平均历史年化报酬率 (50% APY) 进行的复利计算，不保证未来结果。',
         conclusionText: 'Apex Claw 提出一种去中心化解决方案，让 AI 时代的生产红利不再集中于少数中心化实体，而是通过开放参与与数学机制实现全民共享。我们相信，此协议能有效缓解自动化带来的购买力危机，并为 AI 与人类共存提供可行的基础设施。',
-        disclaimer: '免责声明：所有显示的数值仅为模拟展示用途，不代表实际收益。过去表现不保证未来结果。参与涉及风险。',
+        disclaimer: '免责声明：所有显示的数值仅为模拟展示用途，不代表实际收益。过去表现不保证未来结果。',
         waitlistTitle: '加入等候名单',
-        waitlistDesc: '成为 Apex Claw 正式启动后的首批节点经理。输入您的 Email 以获取最新进度通知。',
+        waitlistDesc: '抢先加入 Apex Claw 协议。选择您的角色并输入 Email 以获取最新进度通知。',
         waitlistBtn: '加入等候名单',
+        waitlistRoleFunder: '投资方 (30%)',
+        waitlistRoleManager: '节点经理 (30%)',
+        waitlistRoleLabel: '选择您的角色：',
+        contactTeam: '联系团队',
         waitlistPrivacy: '我们尊重您的隐私。您可随时取消订阅。',
         waitlistSuccess: '感谢您！已成功加入等候名单。'
     }
@@ -1065,7 +1096,7 @@ function switchLang(lang) {
     document.getElementById('hero-title').innerHTML = d.heroTitle;
     document.getElementById('hero-subtitle').innerText = d.heroSubtitle;
     document.getElementById('btn-read').innerText = d.btnRead;
-    document.getElementById('btn-join').innerText = d.btnJoin;
+    document.getElementById('btn-join-waitlist').innerText = d.waitlistBtn;
     document.getElementById('stat-cap').innerText = d.statCap;
     document.getElementById('stat-prof').innerText = d.statProf;
     document.getElementById('download-title').innerText = d.dlTitle;
@@ -1076,6 +1107,10 @@ function switchLang(lang) {
     document.getElementById('waitlist-desc').innerText = d.waitlistDesc;
     document.getElementById('waitlist-btn').innerText = d.waitlistBtn;
     document.getElementById('waitlist-privacy').innerText = d.waitlistPrivacy;
+    document.getElementById('waitlist-role-label').innerText = d.waitlistRoleLabel;
+    document.getElementById('waitlist-role-funder-text').innerText = d.waitlistRoleFunder;
+    document.getElementById('waitlist-role-manager-text').innerText = d.waitlistRoleManager;
+    document.getElementById('btn-contact-team').innerText = d.contactTeam;
     
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     let btnId = lang === 'en' ? 'btn-en' : (lang === 'zh-TW' ? 'btn-tw' : 'btn-cn');
@@ -1084,16 +1119,31 @@ function switchLang(lang) {
     renderContent();
 }
 
+const GOOGLE_SHEET_URL = 'REPLACE_WITH_YOUR_APPS_SCRIPT_URL';
+
 function handleWaitlist(e) {
     e.preventDefault();
     const d = meta[currentLang];
     const form = document.getElementById('waitlist-form');
     const email = form.querySelector('input[type="email"]').value;
-    // Store locally (replace with real backend later)
-    const waitlist = JSON.parse(localStorage.getItem('apex_waitlist') || '[]');
-    waitlist.push({ email, timestamp: new Date().toISOString(), lang: currentLang });
-    localStorage.setItem('apex_waitlist', JSON.stringify(waitlist));
-    form.innerHTML = `<div class="text-cyan-400 font-bold text-lg py-4"><i class="fas fa-check-circle mr-2"></i>${d.waitlistSuccess}</div>`;
+    const role = form.querySelector('input[name="role"]:checked')?.value;
+    if (!role) return;
+    const btn = document.getElementById('waitlist-btn');
+    btn.disabled = true;
+    btn.innerText = '...';
+    const payload = { email, role, lang: currentLang, timestamp: new Date().toISOString() };
+    fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    }).then(() => {
+        form.innerHTML = `<div class="text-cyan-400 font-bold text-lg py-4"><i class="fas fa-check-circle mr-2"></i>${d.waitlistSuccess}</div>`;
+    }).catch(() => {
+        btn.disabled = false;
+        btn.innerText = d.waitlistBtn;
+        alert('Submission failed. Please try again.');
+    });
 }
 
 window.onload = () => {
