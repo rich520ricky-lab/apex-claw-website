@@ -1105,11 +1105,15 @@ function switchLang(lang) {
     document.getElementById('disclaimer-text').innerText = d.disclaimer;
     document.getElementById('waitlist-title').innerText = d.waitlistTitle;
     document.getElementById('waitlist-desc').innerText = d.waitlistDesc;
-    document.getElementById('waitlist-btn').innerText = d.waitlistBtn;
+    const wBtn = document.getElementById('waitlist-btn');
+    if (wBtn) wBtn.innerText = d.waitlistBtn;
     document.getElementById('waitlist-privacy').innerText = d.waitlistPrivacy;
-    document.getElementById('waitlist-role-label').innerText = d.waitlistRoleLabel;
-    document.getElementById('waitlist-role-funder-text').innerText = d.waitlistRoleFunder;
-    document.getElementById('waitlist-role-manager-text').innerText = d.waitlistRoleManager;
+    const wRL = document.getElementById('waitlist-role-label');
+    if (wRL) wRL.innerText = d.waitlistRoleLabel;
+    const wRF = document.getElementById('waitlist-role-funder-text');
+    if (wRF) wRF.innerText = d.waitlistRoleFunder;
+    const wRM = document.getElementById('waitlist-role-manager-text');
+    if (wRM) wRM.innerText = d.waitlistRoleManager;
     document.getElementById('btn-contact-team').innerText = d.contactTeam;
     
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
